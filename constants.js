@@ -1,17 +1,14 @@
 // @flow
 import * as d3 from 'd3'
 
-export type TrackId = 'MOBILE' | 'WEB_CLIENT' | 'FOUNDATIONS' | 'SERVERS' |
+export type TrackId = 'SOFTWARE ENGINEERING' |
   'PROJECT_MANAGEMENT' | 'COMMUNICATION' | 'CRAFT' | 'INITIATIVE' |
   'CAREER_DEVELOPMENT' | 'ORG_DESIGN' | 'WELLBEING' | 'ACCOMPLISHMENT' |
   'MENTORSHIP' | 'EVANGELISM' | 'RECRUITING' | 'COMMUNITY'
 export type Milestone = 0 | 1 | 2 | 3 | 4 | 5
 
 export type MilestoneMap = {
-  'MOBILE': Milestone,
-  'WEB_CLIENT': Milestone,
-  'FOUNDATIONS': Milestone,
-  'SERVERS': Milestone,
+  'SOFTWARE ENGINEERING': Milestone,
   'PROJECT_MANAGEMENT': Milestone,
   'COMMUNICATION': Milestone,
   'CRAFT': Milestone,
@@ -41,23 +38,26 @@ export const milestoneToPoints = (milestone: Milestone): number => {
 
 export const pointsToLevels = {
   '0': '1.1',
-  '5': '1.2',
-  '11': '1.3',
-  '17': '2.1',
-  '23': '2.2',
-  '29': '2.3',
-  '36': '3.1',
-  '43': '3.2',
-  '50': '3.3',
-  '58': '4.1',
-  '66': '4.2',
-  '74': '4.3',
-  '90': '5.1',
-  '110': '5.2',
-  '135': '5.3',
+  '11': '1.2',
+  '17': '1.3',
+  '23': '2.1',
+  '29': '2.2',
+  '36': '2.3',
+  '42': '3.1',
+  '50': '3.2',
+  '58': '3.3',
+  '66': '4.1',
+  '74': '4.2',
+  '80': '4.3',
+  '88': '5.1',
+  '96': '5.2',
+  '102': '5.3',
+  '110': '6.1',
+  '120': '6.2',
+  '130': '6.3'
 }
 
-export const maxLevel = 135
+export const maxLevel = 130
 
 export type Track = {
   displayName: string,
@@ -71,10 +71,7 @@ export type Track = {
 }
 
 type Tracks = {|
-  'MOBILE': Track,
-  'WEB_CLIENT': Track,
-  'FOUNDATIONS': Track,
-  'SERVERS': Track,
+  'SOFTWARE ENGINEERING': Track,
   'PROJECT_MANAGEMENT': Track,
   'COMMUNICATION': Track,
   'CRAFT': Track,
@@ -90,211 +87,10 @@ type Tracks = {|
 |}
 
 export const tracks: Tracks = {
-  "MOBILE": {
-    "displayName": "Mobile",
+  "SOFTWARE ENGINEERING": {
+    "displayName": "Software Engineering",
     "category": "A",
-    "description": "Develops expertise in native mobile platform engineering, such as iOS or Android",
-    "milestones": [{
-      "summary": "Works effectively within established iOS or Android architectures, following current best practices",
-      "signals": [
-        "Delivers features requiring simple local modifications",
-        "Adds simple actions that call server endpoints",
-        "Reuses existing components appropriately",
-      ],
-      "examples": [
-        "Added existing button to a different iOS surface",
-        "Add follow button for publications on Android",
-        "Fetched and displayed a new stream, using existing stream item styles",
-      ],
-    }, {
-      "summary": "Develops new instances of existing architecture, or minor improvements to existing architecture",
-      "signals": [
-        "Defines new useful and appropriate proto-generated objects",
-        "Creates simple new activities on Android",
-        "Migrates code from old patterns to new patterns",
-      ],
-      "examples": [
-        "Upgraded SDWebImage to a new major version",
-        "Added support for rendering a new type of stream item",
-        "Prototyped a simple new feature quickly",
-      ],
-    }, {
-      "summary": "Designs major new features and demonstrates a nuanced understanding of mobile platform constraints",
-      "signals": [
-        "Implements complex features with a large product surface area",
-        "Works effectively with  Android reactive programming framework",
-        "Adds support for new iOS features after a major iOS version upgrade",
-      ],
-      "examples": [
-        "Designed iOS caching strategy for offline reading",
-        "Built series reader on Android",
-        "Informed the team about recent best practice changes and deprecations",
-      ],
-    }, {
-      "summary": "Builds complex, reusable architectures that pioneer best practices and enable engineers to work more effectively",
-      "signals": [
-        "Pioneers architecture migration strategies that reduce programmer burden",
-        "Fixes subtle memory management issues",
-        "Implements interactive dismissals that bring delight",
-      ],
-      "examples": [
-        "Upgraded CocoaPods to a new major version",
-        "Designed architecture for fetching and rendering stream items",
-        "Migrated Android persistance layer to reactive programming",
-      ],
-    }, {
-      "summary": "Is an industry-leading expert in mobile engineering or sets strategic mobile direction for an eng team",
-      "signals": [
-        "Defines long-term goals and ensures active projects are in service of them",
-        "Designs and builds innovative, industry-leading UI interactions",
-        "Invents new techniques to responsibly stretch limits of the Android platform",
-      ],
-      "examples": [
-        "Defined and drove complete migration plan to Swift or Kotlin",
-        "Implemented Android recycler views before platform support existed",
-        "Pioneered application-level abstractions for multi-app environment",
-      ],
-    }],
-  },
-
-  "WEB_CLIENT": {
-    "displayName": "Web client",
-    "category": "A",
-    "description": "Develops expertise in web client technologies, such as HTML, CSS, and JavaScript",
-    "milestones": [{
-      "summary": "Works effectively within established web client architectures, following current best practices",
-      "signals": [
-        "Makes minor modifications to existing screens",
-        "Fixes simple design quality issues",
-        "Uses CSS appropriately, following style guide",
-      ],
-      "examples": [
-        "Implemented sticky footer on the post page",
-        "Hooked up the action to dismiss a post from a stream",
-        "Built PaymentHistory screen using ResponseScreen",
-      ],
-    }, {
-      "summary": "Develops new instances of existing architecture, or minor improvements to existing architecture",
-      "signals": [
-        "Makes sensible abstractions based on template and code patterns",
-        "Specs and builds interactive components independently",
-        "Prototypes simple new features quickly",
-      ],
-      "examples": [
-        "Built credit card input component",
-        "Created shared buttons template",
-        "Built modal system",
-      ],
-    }, {
-      "summary": "Designs major new features and demonstrates a nuanced understanding of browser constraints",
-      "signals": [
-        "Provides useful design feedback and suggests feasible alternatives",
-        "Performs systemic tasks to significantly minimise bundle size",
-        "Acts a caretaker for all of web client code",
-      ],
-      "examples": [
-        "Designed font loading strategy for Medium",
-        "Researched utility of service workers for Medium",
-        "Designed and implemented ResponseScreen",
-      ],
-    }, {
-      "summary": "Builds complex, reusable architectures that pioneer best practices and enable engineers to work more effectively",
-      "signals": [
-        "Pioneers architecture migrations that reduce programmer burden",
-        "Implements complex UI transitions that bring delight",
-        "Makes architectural decisions that eliminate entire classes of bugs",
-      ],
-      "examples": [
-        "Designed Medium's post morpher and delta system",
-        "Implemented Medium's scrolling text over image blur",
-        "Designed and pioneered proto-based model storage",
-      ],
-    }, {
-      "summary": "Is an industry-leading expert in web client or sets strategic web client direction for an eng team",
-      "signals": [
-        "Invents new techniques to innovate and overcome browser constraints",
-        "Identifies and solved systemic problems with current architecture",
-        "Defines a long-term vision for web client and ensures projects are in service of it",
-      ],
-      "examples": [
-        "Invented CSS in JS",
-        "Defined and drove migration strategy to Lite",
-        "Implemented unidirectional data flow to completion",
-      ],
-    }],
-  },
-
-  "FOUNDATIONS": {
-    "displayName": "Foundations",
-    "category": "A",
-    "description": "Develops expertise in foundational systems, such as deployments, pipelines, databases and machine learning",
-    "milestones": [{
-      "summary": "Works effectively within established structures, following current best practices",
-      "signals": [
-        "Writes thorough postmortems for service outages",
-        "Makes simple configuration changes to services",
-        "Performs backfills safely and effectively, without causing pages",
-      ],
-      "examples": [
-        "Made safe and effective Ansible changes",
-        "Implemented new ETL pipelines based on existing ones",
-        "Resolved out of disk errors independently",
-      ],
-    }, {
-      "summary": "Develops new instances of existing architecture, or minor improvements to existing architecture",
-      "signals": [
-        "Made minor version upgrades to technologies",
-        "Builds machine learning jobs within the ML framework",
-        "Triages service issues correctly and independently",
-      ],
-      "examples": [
-        "Upgraded NodeJS from 8.0 to 8.1.1",
-        "Built custom packages for RPMs",
-        "Improved ETL efficiency by improving Dynamo to S3 loading",
-      ],
-    }, {
-      "summary": "Designs standalone systems of moderate complexity, or major new features in existing systems",
-      "signals": [
-        "Acts as primary maintainer for existing critical systems",
-        "Designs moderately complex systems",
-        "Makes major version upgrades to libraries",
-      ],
-      "examples": [
-        "Designed Ansible configuration management",
-        "Built Medium's realtime stats pipeline",
-        "Designed flexible framework for writing machine learning jobs",
-      ],
-    }, {
-      "summary": "Builds complex, reusable architectures that pioneer best practices for other engineers, or multi-system services",
-      "signals": [
-        "Designs complex projects that encompass multiple systems and technologies",
-        "Demonstrates deep knowledge of foundational systems",
-        "Introduces new databases and technologies to meet underserved needs",
-      ],
-      "examples": [
-        "Designed and built BBFD",
-        "Designed AWS configuration management",
-        "Introduced Kinesis and pioneered streaming events pipeline",
-      ],
-    }, {
-      "summary": "Is an industry-leading expert in foundational engineering or sets strategic foundational direction for an eng team",
-      "signals": [
-        "Designs transformational projects in service of long-term goals",
-        "Defines the strategic vision for foundational work and supporting technologies",
-        "Invents industry-leading techniques to solve complex problems",
-      ],
-      "examples": [
-        "Invented a novel ML technique that advanced the state of the art",
-        "Defined and developed Medium's continuous delivery strategy",
-        "Developed and implemented HA strategy",
-      ],
-    }],
-  },
-
-  "SERVERS": {
-    "displayName": "Servers",
-    "category": "A",
-    "description": "Develops expertise in server side engineering, using technologies such as Go, NodeJS, or Scala",
+    "description": "Develops expertise in building and running software",
     "milestones": [{
       "summary": "Works effectively within established server side frameworks, following current best practices",
       "signals": [
@@ -494,7 +290,7 @@ export const tracks: Tracks = {
 
   "CRAFT": {
     "displayName": "Craft",
-    "category": "B",
+    "category": "A",
     "description": "Embodies and promotes practices to ensure excellent quality products and services",
     "milestones": [{
       "summary": "Delivers consistently good quality work",
@@ -1195,12 +991,12 @@ export const categoryColorScale = d3.scaleOrdinal()
 export const titles = [
   {label: 'Engineer I', minPoints: 0, maxPoints: 16},
   {label: 'Engineer II', minPoints: 17, maxPoints: 35},
-  {label: 'Senior Engineer', minPoints: 36, maxPoints: 57},
-  {label: 'Group Lead', minPoints: 36, maxPoints: 57},
-  {label: 'Staff Engineer', minPoints: 58, maxPoints: 89},
-  {label: 'Senior Group Lead', minPoints: 58, maxPoints: 89},
-  {label: 'Principal Engineer', minPoints: 90},
-  {label: 'Director of Engineering', minPoints: 90}
+  {label: 'Engineer III', minPoints: 36, maxPoints: 57},
+  {label: 'Staff Engineer I', minPoints: 36, maxPoints: 57},
+  {label: 'Staff Engineer II', minPoints: 58, maxPoints: 89},
+  {label: 'Engineering Manager', minPoints: 29, maxPoints: 74},
+  {label: 'Principal Engineer', minPoints: 50},
+  {label: 'Engineering Director', minPoints: 66}
 ]
 
 export const eligibleTitles = (milestoneMap: MilestoneMap): string[] => {
