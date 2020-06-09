@@ -1,17 +1,17 @@
 // @flow
 import * as d3 from 'd3'
 
-export type TrackId = 'SOFTWARE ENGINEERING' |
-  'PROJECT_MANAGEMENT' | 'COMMUNICATION' | 'CRAFT' | 'INITIATIVE' |
+export type TrackId = 'SOFTWARE_ENGINEERING' | 'CRAFT' |
+  'PROJECT_MANAGEMENT' | 'COMMUNICATION' | 'INITIATIVE' |
   'CAREER_DEVELOPMENT' | 'ORG_DESIGN' | 'WELLBEING' | 'ACCOMPLISHMENT' |
   'MENTORSHIP' | 'EVANGELISM' | 'RECRUITING' | 'COMMUNITY'
 export type Milestone = 0 | 1 | 2 | 3 | 4 | 5
 
 export type MilestoneMap = {
-  'SOFTWARE ENGINEERING': Milestone,
+  'SOFTWARE_ENGINEERING': Milestone,
+  'CRAFT': Milestone,
   'PROJECT_MANAGEMENT': Milestone,
   'COMMUNICATION': Milestone,
-  'CRAFT': Milestone,
   'INITIATIVE': Milestone,
   'CAREER_DEVELOPMENT': Milestone,
   'ORG_DESIGN': Milestone,
@@ -38,26 +38,26 @@ export const milestoneToPoints = (milestone: Milestone): number => {
 
 export const pointsToLevels = {
   '0': '1.1',
-  '11': '1.2',
-  '17': '1.3',
-  '23': '2.1',
-  '29': '2.2',
-  '36': '2.3',
-  '42': '3.1',
-  '50': '3.2',
-  '58': '3.3',
-  '66': '4.1',
-  '74': '4.2',
-  '80': '4.3',
-  '88': '5.1',
-  '96': '5.2',
-  '102': '5.3',
+  '10': '1.2',
+  '16': '1.3',
+  '22': '2.1',
+  '28': '2.2',
+  '34': '2.3',
+  '40': '3.1',
+  '47': '3.2',
+  '54': '3.3',
+  '61': '4.1',
+  '68': '4.2',
+  '75': '4.3',
+  '84': '5.1',
+  '92': '5.2',
+  '100': '5.3',
   '110': '6.1',
   '120': '6.2',
-  '130': '6.3'
+  '130': '6.3',
 }
 
-export const maxLevel = 130
+export const maxLevel = 135
 
 export type Track = {
   displayName: string,
@@ -71,7 +71,7 @@ export type Track = {
 }
 
 type Tracks = {|
-  'SOFTWARE ENGINEERING': Track,
+  'SOFTWARE_ENGINEERING': Track,
   'PROJECT_MANAGEMENT': Track,
   'COMMUNICATION': Track,
   'CRAFT': Track,
@@ -87,69 +87,117 @@ type Tracks = {|
 |}
 
 export const tracks: Tracks = {
-  "SOFTWARE ENGINEERING": {
+  "SOFTWARE_ENGINEERING": {
     "displayName": "Software Engineering",
     "category": "A",
-    "description": "Develops expertise in building and running software",
+    "description": "Develops expertise in native mobile platform engineering, such as iOS or Android",
     "milestones": [{
-      "summary": "Works effectively within established server side frameworks, following current best practices",
+      "summary": "Works effectively within established guidelines and architectures, following current best practices             ",
       "signals": [
-        "Adds NodeJS endpoints using layers architecture",
-        "Adds golang endpoints using Gotham architecture",
-        "Makes minor server changes to support client needs",
+        "I follow established patterns and approaches within existing code bases of my team scope with ease",
+        "I can autonomously code a simple feature on the JS side",
+        "I can autonomously code a simple feature on the Rails side",
       ],
       "examples": [
-        "Added IFTTT trigger for new bookmark to medium2",
-        "Added delete audio route to Buggle",
-        "Queried a Dynamo LSI appropriately",
+        "Submit PR that doesn't require much back-n-forth (1 round of review) and ensure the review is made in a reasonable amount of time (< 24h)",
       ],
     }, {
       "summary": "Develops new instances of existing architecture, or minor improvements to existing architecture",
       "signals": [
-        "Assesses correctness and utility of existing code and avoids blind copy-pasting",
-        "Generalizes code when appropriate",
-        "Determines data needs from product requirements",
+        "Autonomous over my team tech scope",
+        "I review and understand every project scoping documents (at least the summary and main features)",
+        "I can autonomously code an advanced feature on the JS side",
+        "I can autonomously code an advanced feature on the Rails side",
       ],
       "examples": [
-        "Identified need for new index on Dynamo",
-        "Acted as caretaker for routes protos",
-        "Updated Facebook API version and codebase dependencies",
       ],
     }, {
-      "summary": "Designs standalone systems of moderate complexity, or major new features in existing systems",
+      "summary": "Designs major new features and demonstrates a nuanced understanding of platform constraints             ",
       "signals": [
-        "Acts as primary maintainer for existing critical systems",
-        "Integrates third party services effectively",
-        "Writes playbooks for new service maintenance",
+        "Design a generic solution to handle a technical constraints impacting multiple team (Api Authentication, E2E Encryption, Resque Job atomicity…)",
+        "Takes into account consequences of changes on platform load, hosting costs",
       ],
       "examples": [
-        "Implemented Google Auth login to Medium",
-        "Implemented payments integration with Stripe",
-        "Built Textshots server",
       ],
     }, {
-      "summary": "Builds complex, reusable architectures that pioneer best practices for other engineers, or multi-system services",
+      "summary": "Builds complex, reusable architectures that pioneer best practices and enable engineers to work more effectively",
       "signals": [
-        "Delivers complex systems that achieve their goals",
-        "Avoids subtle architectural mistakes when considering new systems",
-        "Makes appropriate buy vs build choices",
       ],
       "examples": [
-        "Designed Medium's ranked feed architecture",
-        "Designed custom domains architecture",
-        "Created Gotham framework for creating Go services",
       ],
     }, {
-      "summary": "Is an industry-leading expert in server side engineering or sets strategic server side direction for an eng team",
+      "summary": "Is an industry-leading expert in software engineering or sets a technical strategic direction for the engineering organization",
       "signals": [
-        "Designs transformational projects of significant complexity and scope",
-        "Makes decisions that have positive, long term, wide ranging consequences",
-        "Identifies and solves systemic problems with current architecture",
+        "Owns PGSQL scale roadmap",
       ],
       "examples": [
-        "Researched, vetted, and selected Go as Medium's statically typed language",
-        "Defined microservices architecture and medium2 migration plan",
-        "Defined and implemented proprietary IP core to the company's success",
+      ],
+    }],
+  },
+
+  "CRAFT": {
+    "displayName": "Craft",
+    "category": "A",
+    "description": "Embodies and promotes practices to ensure excellent quality products and services",
+    "milestones": [{
+      "summary": "Delivers consistently good quality work",
+      "signals": [
+        "Tests new code thoroughly, both locally, and in production once shipped",
+        "Writes tests for every new feature and bug fix",
+        "Writes clear comments and documentation",
+      ],
+      "examples": [
+        "Caught a bug on Hatch before it went live",
+        "Landed non-trivial PR with no caretaker comments",
+        "Wrote hermetic tests for the happy and sad cases",
+      ],
+    }, {
+      "summary": "Increases the robustness and reliability of codebases, and devotes time to polishing products and systems",
+      "signals": [
+        "Refactors existing code to make it more testable",
+        "Adds tests for uncovered areas",
+        "Deletes unnecessary code and deprecates proactively when safe to do so",
+      ],
+      "examples": [
+        "Requested tests for a PR when acting as reviewer",
+        "Reduced the number of zelda fitzgerald exceptions",
+        "Fixed a TODO for someone else in the codebase",
+      ],
+    }, {
+      "summary": "Improves others' ability to deliver great quality work",
+      "signals": [
+        "Implements systems that enable better testing",
+        "Gives thoughtful code reviews as a domain expert",
+        "Adds tooling to improve code quality",
+      ],
+      "examples": [
+        "Improved PRB to run the same volume of tests faster",
+        "Simplified hermetic test data modification",
+        "Created fixture system for visual quality",
+      ],
+    }, {
+      "summary": "Advocates for and models great quality with proactive actions, and tackles difficult and subtle system issues",
+      "signals": [
+        "Builds systems so as to eliminate entire classes of programmer error",
+        "Focuses the team on quality with regular reminders",
+        "Coordinates Watch priorities and projects",
+      ],
+      "examples": [
+        "Added code coverage reporting to iOS CI pipeline",
+        "Iterated repeatedly to develop Medium's underlines solution",
+        "Defined and oversaw plan for closing Heartbleed vulnerability",
+      ],
+    }, {
+      "summary": "Enables and encourages the entire organization to make quality a central part of the development process",
+      "signals": [
+        "Defines policies for the engineering org that encourage quality work",
+        "Identifies and eliminates single points of failure throughout the organization",
+        "Secures time and resources from execs to support great quality",
+      ],
+      "examples": [
+        "Negotiated resources for Fix-It week with exec team",
+        "Instituted and ensured success of a 20% time policy",
+        "Started The Watch",
       ],
     }],
   },
@@ -288,72 +336,6 @@ export const tracks: Tracks = {
     }],
   },
 
-  "CRAFT": {
-    "displayName": "Craft",
-    "category": "A",
-    "description": "Embodies and promotes practices to ensure excellent quality products and services",
-    "milestones": [{
-      "summary": "Delivers consistently good quality work",
-      "signals": [
-        "Tests new code thoroughly, both locally, and in production once shipped",
-        "Writes tests for every new feature and bug fix",
-        "Writes clear comments and documentation",
-      ],
-      "examples": [
-        "Caught a bug on Hatch before it went live",
-        "Landed non-trivial PR with no caretaker comments",
-        "Wrote hermetic tests for the happy and sad cases",
-      ],
-    }, {
-      "summary": "Increases the robustness and reliability of codebases, and devotes time to polishing products and systems",
-      "signals": [
-        "Refactors existing code to make it more testable",
-        "Adds tests for uncovered areas",
-        "Deletes unnecessary code and deprecates proactively when safe to do so",
-      ],
-      "examples": [
-        "Requested tests for a PR when acting as reviewer",
-        "Reduced the number of zelda fitzgerald exceptions",
-        "Fixed a TODO for someone else in the codebase",
-      ],
-    }, {
-      "summary": "Improves others' ability to deliver great quality work",
-      "signals": [
-        "Implements systems that enable better testing",
-        "Gives thoughtful code reviews as a domain expert",
-        "Adds tooling to improve code quality",
-      ],
-      "examples": [
-        "Improved PRB to run the same volume of tests faster",
-        "Simplified hermetic test data modification",
-        "Created fixture system for visual quality",
-      ],
-    }, {
-      "summary": "Advocates for and models great quality with proactive actions, and tackles difficult and subtle system issues",
-      "signals": [
-        "Builds systems so as to eliminate entire classes of programmer error",
-        "Focuses the team on quality with regular reminders",
-        "Coordinates Watch priorities and projects",
-      ],
-      "examples": [
-        "Added code coverage reporting to iOS CI pipeline",
-        "Iterated repeatedly to develop Medium's underlines solution",
-        "Defined and oversaw plan for closing Heartbleed vulnerability",
-      ],
-    }, {
-      "summary": "Enables and encourages the entire organization to make quality a central part of the development process",
-      "signals": [
-        "Defines policies for the engineering org that encourage quality work",
-        "Identifies and eliminates single points of failure throughout the organization",
-        "Secures time and resources from execs to support great quality",
-      ],
-      "examples": [
-        "Negotiated resources for Fix-It week with exec team",
-        "Instituted and ensured success of a 20% time policy",
-        "Started The Watch",
-      ],
-    }],
-  },
 
   "INITIATIVE": {
     "displayName": "Initiative",
@@ -988,15 +970,40 @@ export const categoryColorScale = d3.scaleOrdinal()
   .domain(categoryIds)
   .range(['#00abc2', '#428af6', '#e1439f', '#e54552'])
 
+
+  // '0': '1.1',
+  // '10': '1.2',
+  // '16': '1.3',
+  // '22': '2.1',
+  // '28': '2.2',
+  // '34': '2.3',
+  // '40': '3.1',
+  // '47': '3.2',
+  // '54': '3.3',
+  // '61': '4.1',
+  // '68': '4.2',
+  // '75': '4.3',
+  // '84': '5.1',
+  // '92': '5.2',
+  // '100': '5.3',
+  // '110': '6.1',
+  // '120': '6.2',
+  // '130': '6.3',
+
 export const titles = [
-  {label: 'Engineer I', minPoints: 0, maxPoints: 16},
-  {label: 'Engineer II', minPoints: 17, maxPoints: 35},
-  {label: 'Engineer III', minPoints: 36, maxPoints: 57},
-  {label: 'Staff Engineer I', minPoints: 36, maxPoints: 57},
-  {label: 'Staff Engineer II', minPoints: 58, maxPoints: 89},
-  {label: 'Engineering Manager', minPoints: 29, maxPoints: 74},
-  {label: 'Principal Engineer', minPoints: 50},
-  {label: 'Engineering Director', minPoints: 66}
+  {label: 'Engineer I', minPoints: 0, maxPoints: 21},
+  {label: 'Engineer II', minPoints: 22, maxPoints: 39},
+  {label: 'Engineer III', minPoints: 40, maxPoints: 60},
+  {label: 'Engineer IV', minPoints: 61, maxPoints: 83},
+  {label: 'Engineer Manager I', minPoints: 28, maxPoints: 39},
+  {label: 'Engineer Manager II', minPoints: 40, maxPoints: 60},
+  {label: 'Engineer Manager III', minPoints: 61, maxPoints: 83},
+  {label: 'Staff Engineer I', minPoints: 34, maxPoints: 53},
+  {label: 'Staff Engineer II', minPoints: 54, maxPoints: 74},
+  {label: 'Principal Engineer I', minPoints: 61, maxPoints: 83},
+  {label: 'Principal Engineer II', minPoints: 84},
+  {label: 'Engineering Director', minPoints: 84},
+  {label: 'VP of Engineering', minPoints: 110},
 ]
 
 export const eligibleTitles = (milestoneMap: MilestoneMap): string[] => {
