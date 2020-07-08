@@ -37,24 +37,25 @@ export const milestoneToPoints = (milestone: Milestone): number => {
 }
 
 export const pointsToLevels = {
-  '0': '1.1',
-  '10': '1.2',
-  '16': '1.3',
-  '22': '2.1',
-  '28': '2.2',
-  '34': '2.3',
-  '40': '3.1',
-  '47': '3.2',
-  '54': '3.3',
-  '61': '4.1',
-  '68': '4.2',
-  '75': '4.3',
-  '84': '5.1',
-  '92': '5.2',
-  '100': '5.3',
-  '110': '6.1',
-  '120': '6.2',
-  '130': '6.3',
+  '0': '0',
+  '5': '1.1',
+  '11': '1.2',
+  '17': '1.3',
+  '23': '2.1',
+  '29': '2.2',
+  '36': '2.3',
+  '43': '3.1',
+  '50': '3.2',
+  '58': '3.3',
+  '66': '4.1',
+  '74': '4.2',
+  '82': '4.3',
+  '90': '5.1',
+  '98': '5.2',
+  '106': '5.3',
+  '115': '6.1',
+  '125': '6.2',
+  '135': '6.3',
 }
 
 export const maxLevel = 135
@@ -72,9 +73,9 @@ export type Track = {
 
 type Tracks = {|
   'SOFTWARE_ENGINEERING': Track,
+  'CRAFT': Track,
   'PROJECT_MANAGEMENT': Track,
   'COMMUNICATION': Track,
-  'CRAFT': Track,
   'INITIATIVE': Track,
   'CAREER_DEVELOPMENT': Track,
   'ORG_DESIGN': Track,
@@ -90,7 +91,7 @@ export const tracks: Tracks = {
   "SOFTWARE_ENGINEERING": {
     "displayName": "Software Engineering",
     "category": "A",
-    "description": "Develops expertise in native mobile platform engineering, such as iOS or Android",
+    "description": "Develops expertise in building and running software",
     "milestones": [{
       "summary": "Works effectively within established guidelines and architectures, following current best practices             ",
       "signals": [
@@ -102,7 +103,7 @@ export const tracks: Tracks = {
         "Submit PR that doesn't require much back-n-forth (1 round of review) and ensure the review is made in a reasonable amount of time (< 24h)",
       ],
     }, {
-      "summary": "Develops new instances of existing architecture, or minor improvements to existing architecture",
+      "summary": "Develops new instances of existing architecture, or minor improvements to existing architecture. Autonomous over of its team scope",
       "signals": [
         "Autonomous over my team tech scope",
         "I review and understand every project scoping documents (at least the summary and main features)",
@@ -112,7 +113,7 @@ export const tracks: Tracks = {
       "examples": [
       ],
     }, {
-      "summary": "Designs major new features and demonstrates a nuanced understanding of platform constraints             ",
+      "summary": "Designs major new features and demonstrates a nuanced understanding of platform constraints. Autonomous over its domain scope",
       "signals": [
         "Design a generic solution to handle a technical constraints impacting multiple team (Api Authentication, E2E Encryption, Resque Job atomicity…)",
         "Takes into account consequences of changes on platform load, hosting costs",
@@ -138,7 +139,7 @@ export const tracks: Tracks = {
   "CRAFT": {
     "displayName": "Craft",
     "category": "A",
-    "description": "Embodies and promotes practices to ensure excellent quality products and services",
+    "description": "Embodies and promotes practices to ensure excellent quality, performance and reliability of products and services",
     "milestones": [{
       "summary": "Delivers consistently good quality work",
       "signals": [
@@ -152,7 +153,7 @@ export const tracks: Tracks = {
         "Wrote hermetic tests for the happy and sad cases",
       ],
     }, {
-      "summary": "Increases the robustness and reliability of codebases, and devotes time to polishing products and systems",
+      "summary": "Increases the robustness and reliability of codebase, and devotes time to polishing products and systems",
       "signals": [
         "Refactors existing code to make it more testable",
         "Adds tests for uncovered areas",
@@ -160,8 +161,7 @@ export const tracks: Tracks = {
       ],
       "examples": [
         "Requested tests for a PR when acting as reviewer",
-        "Reduced the number of zelda fitzgerald exceptions",
-        "Fixed a TODO for someone else in the codebase",
+        "Reduced the number of flaky",
       ],
     }, {
       "summary": "Improves others' ability to deliver great quality work",
@@ -171,21 +171,15 @@ export const tracks: Tracks = {
         "Adds tooling to improve code quality",
       ],
       "examples": [
-        "Improved PRB to run the same volume of tests faster",
-        "Simplified hermetic test data modification",
-        "Created fixture system for visual quality",
       ],
     }, {
       "summary": "Advocates for and models great quality with proactive actions, and tackles difficult and subtle system issues",
       "signals": [
         "Builds systems so as to eliminate entire classes of programmer error",
         "Focuses the team on quality with regular reminders",
-        "Coordinates Watch priorities and projects",
+        "Coordinates TT priorities and projects",
       ],
       "examples": [
-        "Added code coverage reporting to iOS CI pipeline",
-        "Iterated repeatedly to develop Medium's underlines solution",
-        "Defined and oversaw plan for closing Heartbleed vulnerability",
       ],
     }, {
       "summary": "Enables and encourages the entire organization to make quality a central part of the development process",
@@ -197,7 +191,7 @@ export const tracks: Tracks = {
       "examples": [
         "Negotiated resources for Fix-It week with exec team",
         "Instituted and ensured success of a 20% time policy",
-        "Started The Watch",
+        "Started TT concept",
       ],
     }],
   },
@@ -214,24 +208,18 @@ export const tracks: Tracks = {
         "Writes effective technical specs outlining approach",
       ],
       "examples": [
-        "Wrote the technical spec for featured post images",
-        "Delivered stream item support for email digests",
-        "Delivered payment history dashboard",
       ],
     }, {
-      "summary": "Effectively delivers small personal projects",
+      "summary": "Effectively delivers small personal projects or act as Tech holder on simple projects",
       "signals": [
         "Performs research and considers alternative approaches",
         "Balances pragmatism and polish appropriately",
         "Defines and hits interim milestones",
       ],
       "examples": [
-        "Delivered promo editor",
-        "Delivered audio uploading for web client",
-        "Executed the recommends to claps backfill",
       ],
     }, {
-      "summary": "Effectively delivers projects through a small team",
+      "summary": "Effectively delivers projects through a small team, Autonomous as Tech Holder on any scope of the team",
       "signals": [
         "Delegates tasks to others appropriately",
         "Integrates business needs into project planning",
@@ -250,8 +238,7 @@ export const tracks: Tracks = {
         "Leverages recognition of repeated project patterns",
       ],
       "examples": [
-        "Oversaw technical delivery of Hightower",
-        "Managed infrastructure migration to VPC",
+        "Managed infrastructure migration to AWS",
         "Involved marketing, legal, and appropriate functions at project start",
       ],
     }, {
@@ -263,7 +250,6 @@ export const tracks: Tracks = {
       ],
       "examples": [
         "Managed technical migration to SOA",
-        "Lead technical delivery of 10/7",
         "Delivered multi-month engineering project on time",
       ],
     }],
@@ -276,13 +262,12 @@ export const tracks: Tracks = {
     "milestones": [{
       "summary": "Communicates effectively to close stakeholders when called upon, and incorporates constructive feedback",
       "signals": [
-        "Communicates project status clearly and effectively",
+        "Communicates project status clearly and effectively when asked upon",
         "Collaborates with others with empathy",
         "Asks for help at the appropriate juncture",
       ],
       "examples": [
-        "Updated The Watch before running a backfill",
-        "Updated project status changes in Asana promptly",
+        "Updated project status changes in JIRA/Asana promptly, and ensured the PM is kept in the loop",
         "Gave thoughtful check-in and check-out comments",
       ],
     }, {
@@ -290,23 +275,24 @@ export const tracks: Tracks = {
       "signals": [
         "Practises active listening and suspension of attention",
         "Ensures stakeholders are aware of current blockers",
-        "Chooses the appropriate tools for accurate and timely communication",
+        "Chooses the appropriate tools for accurate and timely communication (E-mail, Asana, JIRA, Slack, Meeting minutes…)",
       ],
       "examples": [
+        "As TH, Proactively share daily updates about project timeline",
         "Received and integrated critical feedback positively",
-        "Created cross-team Slack channel for payments work",
-        "Spoke to domain experts before writing spec",
+        "Spoke to domain experts before writing tech scoping",
       ],
     }, {
       "summary": "Proactively shares information, actively solicits feedback, and facilitates communication for multiple stakeholders",
       "signals": [
-        "Resolves communication difficulties between others",
         "Anticipates and shares schedule deviations in plenty of time",
+        "Asks feedback about its performance regarding some assignments",
+        "Resolves communication difficulties between others",
         "Manages project stakeholder expectations effectively",
       ],
       "examples": [
         "Directed team response effectively during outages",
-        "Gave a substantial Eng All Hands presentation on React",
+        "Gave a substantial Tech-time presentation on React",
         "Gave notice of upcoming related work in Eng Briefing",
       ],
     }, {
@@ -318,15 +304,15 @@ export const tracks: Tracks = {
       ],
       "examples": [
         "Lead off-site workshop on interviewing",
-        "Wrote Medium's growth framework and rationale",
-        "Aligned the entire organization around claps",
+        "Presented the next phase of an initiative, highlighting the \"why\" and making \"how\" and \"what\" clear",
+        "Aligned the entire organization around the Work-distribution",
       ],
     }, {
       "summary": "Influences outcomes at the highest level, moves beyond mere broadcasting, and sets best practices for others",
       "signals": [
-        "Defines processes for clear communication for the entire team",
+        "Defines processes for clear communication for the entire organization",
         "Shares the right amount of information with the right people, at the right time",
-        "Develops and delivers plans to execs, the board, and outside investors",
+        "Develops and delivers plans to execs, the board, and external stakeholders",
       ],
       "examples": [
         "Organized half year check-in company offsite",
@@ -345,8 +331,8 @@ export const tracks: Tracks = {
       "summary": "Identifies opportunities for organizational change or product improvements",
       "signals": [
         "Writes Hatch posts about improvement opportunities",
-        "Raises meaningful tensions in tactical meetings",
-        "Asks leadership team probing questions at FAM",
+        "Raises meaningful tensions in a team retrospective",
+        "Asks leadership team probing questions at DMM",
       ],
       "examples": [
         "Wrote about problems with TTR on Hatch",
@@ -998,8 +984,6 @@ export const titles = [
   {label: 'Engineer Manager I', minPoints: 28, maxPoints: 39},
   {label: 'Engineer Manager II', minPoints: 40, maxPoints: 60},
   {label: 'Engineer Manager III', minPoints: 61, maxPoints: 83},
-  {label: 'Staff Engineer I', minPoints: 34, maxPoints: 53},
-  {label: 'Staff Engineer II', minPoints: 54, maxPoints: 74},
   {label: 'Principal Engineer I', minPoints: 61, maxPoints: 83},
   {label: 'Principal Engineer II', minPoints: 84},
   {label: 'Engineering Director', minPoints: 84},
