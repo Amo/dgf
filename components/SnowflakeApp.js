@@ -34,14 +34,21 @@ const hashToState = (hash: String): ?SnowflakeAppState => {
 
 const coerceMilestone = (value: number): Milestone => {
   // HACK I know this is goofy but i'm dealing with flow typing
-  switch(value) {
-    case 0: return 0
-    case 1: return 1
-    case 2: return 2
-    case 3: return 3
-    case 4: return 4
-    case 5: return 5
-    default: return 0
+  switch (value) {
+    case 0:
+      return 0
+    case 1:
+      return 1
+    case 2:
+      return 2
+    case 3:
+      return 3
+    case 4:
+      return 4
+    case 5:
+      return 5
+    default:
+      return 0
   }
 }
 
@@ -50,21 +57,21 @@ const emptyState = (): SnowflakeAppState => {
     name: '',
     title: '',
     milestoneByTrack: {
-      'SOFTWARE_ENGINEERING': 0,
-      'PROJECT_MANAGEMENT': 0,
-      'COMMUNICATION': 0,
-      'CRAFT': 0,
-      'INITIATIVE': 0,
-      'CAREER_DEVELOPMENT': 0,
-      'ORG_DESIGN': 0,
-      'WELLBEING': 0,
-      'ACCOMPLISHMENT': 0,
-      'MENTORSHIP': 0,
-      'EVANGELISM': 0,
-      'RECRUITING': 0,
-      'COMMUNITY': 0
+      SOFTWARE_ENGINEERING: 0,
+      PROJECT_MANAGEMENT: 0,
+      COMMUNICATION: 0,
+      CRAFT: 0,
+      INITIATIVE: 0,
+      CAREER_DEVELOPMENT: 0,
+      ORG_DESIGN: 0,
+      WELLBEING: 0,
+      ACCOMPLISHMENT: 0,
+      MENTORSHIP: 0,
+      EVANGELISM: 0,
+      RECRUITING: 0,
+      COMMUNITY: 0,
     },
-    focusedTrackId: 'SOFTWARE_ENGINEERING'
+    focusedTrackId: 'SOFTWARE_ENGINEERING',
   }
 }
 
@@ -73,27 +80,29 @@ const defaultState = (): SnowflakeAppState => {
     name: 'Cersei Lannister',
     title: 'Software Engineer',
     milestoneByTrack: {
-      'SOFTWARE_ENGINNERING': 1,
-      'PROJECT_MANAGEMENT': 0,
-      'COMMUNICATION': 0,
-      'CRAFT': 0,
-      'INITIATIVE': 0,
-      'CAREER_DEVELOPMENT': 0,
-      'ORG_DESIGN': 0,
-      'WELLBEING': 0,
-      'ACCOMPLISHMENT': 0,
-      'MENTORSHIP': 0,
-      'EVANGELISM': 0,
-      'RECRUITING': 0,
-      'COMMUNITY': 0
+      SOFTWARE_ENGINNERING: 1,
+      PROJECT_MANAGEMENT: 0,
+      COMMUNICATION: 0,
+      CRAFT: 0,
+      INITIATIVE: 0,
+      CAREER_DEVELOPMENT: 0,
+      ORG_DESIGN: 0,
+      WELLBEING: 0,
+      ACCOMPLISHMENT: 0,
+      MENTORSHIP: 0,
+      EVANGELISM: 0,
+      RECRUITING: 0,
+      COMMUNITY: 0,
     },
-    focusedTrackId: 'SOFTWARE_ENGINEERING'
+    focusedTrackId: 'SOFTWARE_ENGINEERING',
   }
 }
 
 const stateToHash = (state: SnowflakeAppState) => {
   if (!state || !state.milestoneByTrack) return null
-  const values = trackIds.map(trackId => state.milestoneByTrack[trackId]).concat(encodeURI(state.name), encodeURI(state.title))
+  const values = trackIds
+    .map((trackId) => state.milestoneByTrack[trackId])
+    .concat(encodeURI(state.name), encodeURI(state.title))
   return values.join(',')
 }
 
@@ -140,7 +149,8 @@ class SnowflakeApp extends React.Component<Props, SnowflakeAppState> {
             width: 380px;
             margin-bottom: 10px;
           }
-          .name-input:hover, .name-input:focus {
+          .name-input:hover,
+          .name-input:focus {
             border-bottom: 2px solid #ccc;
             outline: 0;
           }
@@ -149,53 +159,49 @@ class SnowflakeApp extends React.Component<Props, SnowflakeAppState> {
             text-decoration: none;
           }
         `}</style>
-        <div style={{display: 'flex'}}>
-          <div style={{flex: 1}}>
+        <div style={{ display: 'flex' }}>
+          <div style={{ flex: 1 }}>
             <form>
               <input
-                  type="text"
-                  className="name-input"
-                  value={this.state.name}
-                  onChange={e => this.setState({name: e.target.value})}
-                  placeholder="Name"
-                  />
+                type='text'
+                className='name-input'
+                value={this.state.name}
+                onChange={(e) => this.setState({ name: e.target.value })}
+                placeholder='Name'
+              />
               <TitleSelector
-                  milestoneByTrack={this.state.milestoneByTrack}
-                  currentTitle={this.state.title}
-                  setTitleFn={(title) => this.setTitle(title)} />
+                milestoneByTrack={this.state.milestoneByTrack}
+                currentTitle={this.state.title}
+                setTitleFn={(title) => this.setTitle(title)}
+              />
             </form>
             <PointSummaries milestoneByTrack={this.state.milestoneByTrack} />
             <LevelThermometer milestoneByTrack={this.state.milestoneByTrack} />
           </div>
-          <div style={{flex: 0}}>
+          <div style={{ flex: 0 }}>
             <NightingaleChart
-                milestoneByTrack={this.state.milestoneByTrack}
-                focusedTrackId={this.state.focusedTrackId}
-                handleTrackMilestoneChangeFn={(track, milestone) => this.handleTrackMilestoneChange(track, milestone)} />
+              milestoneByTrack={this.state.milestoneByTrack}
+              focusedTrackId={this.state.focusedTrackId}
+              handleTrackMilestoneChangeFn={(track, milestone) => this.handleTrackMilestoneChange(track, milestone)}
+            />
           </div>
         </div>
         <TrackSelector
-            milestoneByTrack={this.state.milestoneByTrack}
-            focusedTrackId={this.state.focusedTrackId}
-            setFocusedTrackIdFn={this.setFocusedTrackId.bind(this)} />
+          milestoneByTrack={this.state.milestoneByTrack}
+          focusedTrackId={this.state.focusedTrackId}
+          setFocusedTrackIdFn={this.setFocusedTrackId.bind(this)}
+        />
         <KeyboardListener
-            selectNextTrackFn={this.shiftFocusedTrack.bind(this, 1)}
-            selectPrevTrackFn={this.shiftFocusedTrack.bind(this, -1)}
-            increaseFocusedMilestoneFn={this.shiftFocusedTrackMilestoneByDelta.bind(this, 1)}
-            decreaseFocusedMilestoneFn={this.shiftFocusedTrackMilestoneByDelta.bind(this, -1)} />
+          selectNextTrackFn={this.shiftFocusedTrack.bind(this, 1)}
+          selectPrevTrackFn={this.shiftFocusedTrack.bind(this, -1)}
+          increaseFocusedMilestoneFn={this.shiftFocusedTrackMilestoneByDelta.bind(this, 1)}
+          decreaseFocusedMilestoneFn={this.shiftFocusedTrackMilestoneByDelta.bind(this, -1)}
+        />
         <Track
-            milestoneByTrack={this.state.milestoneByTrack}
-            trackId={this.state.focusedTrackId}
-            handleTrackMilestoneChangeFn={(track, milestone) => this.handleTrackMilestoneChange(track, milestone)} />
-        <div style={{display: 'flex', paddingBottom: '20px'}}>
-          <div style={{flex: 1}}>
-            Made with ❤️ by <a href="https://medium.engineering" target="_blank">Medium Eng</a>.
-            Learn about the <a href="https://medium.com/s/engineering-growth-framework" target="_blank">this version of our growth framework</a>
-            {' '}and <a href="https://medium.engineering/engineering-growth-at-medium-4935b3234d25" target="_blank">what we do currently</a>.
-            Get the <a href="https://github.com/Medium/snowflake" target="_blank">source code</a>.
-            Read the <a href="https://medium.com/p/85e078bc15b7" target="_blank">terms of service</a>.
-          </div>
-        </div>
+          milestoneByTrack={this.state.milestoneByTrack}
+          trackId={this.state.focusedTrackId}
+          handleTrackMilestoneChangeFn={(track, milestone) => this.handleTrackMilestoneChange(track, milestone)}
+        />
       </main>
     )
   }
